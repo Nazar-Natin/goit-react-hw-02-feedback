@@ -1,44 +1,32 @@
 import React from 'react';
-import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
 
-export const Statistics = ({ data }) => {
-  let { good, neutral, bad } = data;
-
-  const countTotalFeedback = () => good + neutral + bad;
-  const countPositiveFeedbackPercentage = () =>
-    (good / countTotalFeedback()) * 100;
-
-  return (
-    <div className={`${css.statistics}`}>
-      <ul className={css.list}>
-        <li className={css.listItem}>
-          <p>Good</p>
-          <span>{good}</span>
-        </li>
-        <li className={css.listItem}>
-          <p>Neutral</p>
-          <span>{neutral}</span>
-        </li>
-        <li className={css.listItem}>
-          <p>Bad</p>
-          <span>{bad}</span>
-        </li>
-        <li className={css.listItem}>
-          <p>Total</p>
-          <span className={css.spanRes}>{countTotalFeedback()}</span>
-        </li>
-        <li className={css.listItem}>
-          <p>Positive feedback</p>
-          <span className={css.spanRes}>
-            {countPositiveFeedbackPercentage().toFixed(1)}%
-          </span>
-        </li>
-      </ul>
-    </div>
-  );
-};
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
+  <div>
+    <p>
+      Good: <b>{good}</b>
+    </p>
+    <p>
+      Neutral: <b>{neutral}</b>
+    </p>
+    <p>
+      Bad: <b>{bad}</b>
+    </p>
+    <p>
+      Total: <b>{total}</b>
+    </p>
+    <p>
+      Positive feedback: <b>{positivePercentage}%</b>
+    </p>
+  </div>
+);
 
 Statistics.propTypes = {
-  data: PropTypes.object.isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
+
+export default Statistics;
