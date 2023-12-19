@@ -32,7 +32,7 @@ class App extends Component {
     const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
-      <>
+      <div className='container'>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
@@ -53,7 +53,7 @@ class App extends Component {
             <Notification message="There is no feedback yet" />
           )}
         </Section>
-      </>
+      </div>
     );
   }
 }
